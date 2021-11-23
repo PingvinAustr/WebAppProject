@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Груповий проект</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../../Content/Site.css" />
+</head>
+<body>
+    <div class="section1">
+       
+
+        <div class="upper_triang"></div>
+            
+            
+            <div class="form_wrapper">
+                <div class="first_child" id="first_child_id">66%</div>
+                <div class="second_child" id="second_child_id">
+
+                    <button id="second_child_button" onclick="move()">Test</button>
+
+                </div>
+            </div>
+
+
+
+            <div class="bottom_circle"></div>
+        </div>
+
+
+    <script>
+
+        function move() {
+
+            if (document.getElementById('first_child_id').style.left == "35.5%") {
+                alert("1");
+                document.getElementById('first_child_id').style.left = "0";
+                document.getElementById('second_child_id').style.left = "0";
+            }
+            else {
+                document.getElementById('first_child_id').style.left = "35.5%";
+                document.getElementById('second_child_id').style.left = "-64.5%";
+
+            }
+        }
+
+    </script>
+</body>
+</html>
