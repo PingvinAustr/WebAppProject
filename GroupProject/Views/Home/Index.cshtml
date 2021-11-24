@@ -1,7 +1,9 @@
 ﻿@{
     Layout = null;
+
 }
 
+@model GroupProject.Models.Test
 <!DOCTYPE html>
 
 <html>
@@ -12,27 +14,52 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../../Content/Site.css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body onLoad="move_figures()">
     <div class="section1">
-       
+
 
         <div class="upper_triang"></div>
-            
-            
-            <div class="form_wrapper">
-                <div class="first_child" id="first_child_id">66%</div>
-                <div class="second_child" id="second_child_id">
 
-                    <button id="second_child_button" onclick="move()">Test</button>
 
-                </div>
+        <div class="form_wrapper">
+            <div class="first_child" id="first_child_id">
+
+                <div class="top_text1">log in</div>
+                <div class="gray_text">введіть свої особисті дані для авторизації...</div>
+
+
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                {
+                    <div id="validation_div1"> @ViewBag.validation_input1</div>
+                    <input autocomplete="off" type="text" placeholder="Name" name="Input1" id="Input1" value="@ViewBag.to_save_first_input" />
+                    <img class="images_inputs" style="transition:0.5s;  width:35px; height:35px; position:relative; top:-50px; left:5px; " src="~/Content/person.png" />
+
+
+                    <div id="validation_div2"> @ViewBag.validation_input2</div>
+                    <input autocomplete="off" type="text" placeholder="Password" name="Input2" id="Input2" value="@ViewBag.to_save_second_input"/>
+                    <img class="images_inputs1" style="transition: 0.5s; width: 30px; height: 30px; position:relative; top:-47px;left:7px; " src="~/Content/password.png" />
+
+                    <br>
+                    <input type="submit" value="Login" id="LoginButton" />
+                }
+
+
             </div>
+            <div class="second_child" id="second_child_id">
 
+                <div class="top_text">Вітаємо!</div>
+                <div class="bottom_text">Щоб скористуватися системою - пройдіть процедуру авторизації</div>
+                <div class="input_button" onclick="move()">sign in</div>
 
-
-            <div class="bottom_circle"></div>
+            </div>
         </div>
+
+
+
+        <div class="bottom_circle" id="bot_fig"></div>
+    </div>
 
 
     <script>
@@ -40,17 +67,33 @@
         function move() {
 
             if (document.getElementById('first_child_id').style.left == "35.5%") {
-                alert("1");
+
                 document.getElementById('first_child_id').style.left = "0";
                 document.getElementById('second_child_id').style.left = "0";
+
+                document.getElementById('first_child_id').style.borderRadius = "50px 0px 0px 50px";
+                document.getElementById('second_child_id').style.borderRadius = "0px 50px 50px 0px";
+
             }
             else {
                 document.getElementById('first_child_id').style.left = "35.5%";
                 document.getElementById('second_child_id').style.left = "-64.5%";
+                document.getElementById('first_child_id').style.borderRadius = "0px 50px 50px 0px";
+                document.getElementById('second_child_id').style.borderRadius = "50px 0px 0px 50px";
 
             }
         }
+        function move_figures() {
 
+            //while (true) {
+            var obj1 = document.querySelector('.bottom_circle');
+            var st = getComputedStyle(obj1);
+            console.log(st.top + 10);
+            // top_obj1 = top_obj1.substr(0, top_obj1.length - 1)
+
+            //}
+
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+﻿.main_title {
+    color:red;
+}
+body{
+    height:100%;
+}
+
+.upper_square_background {
+    background: #254aa8;
+    height:330px;
+}
+.bottom_square_background {
+    background: #ebeffe;
+    height:690px;
+}
+
