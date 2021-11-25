@@ -110,8 +110,12 @@ namespace GroupProject.Controllers
 
             // return view
            if (k==0) return View();
-           
-           if ((k!=0)&&(UserRoleIDSaved==3)) return View("~/Views/User/Index.cshtml");
+
+            if ((k != 0) && (UserRoleIDSaved == 3)) { ViewBag.hint_text_bottom_box = "Всі доступні документи:"; ViewBag.docs_list = db.Documents.ToList(); ViewBag.rubrics_list = db.Rubrics.ToList();
+                return View("~/Views/User/Index.cshtml"); }
+            if ((k != 0) && (UserRoleIDSaved == 1)) return View("~/Views/Admin/Index.cshtml");
+
+
             return View();
         }
 

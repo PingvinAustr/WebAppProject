@@ -10,11 +10,63 @@
     <meta name="viewport" content="width=device-width" />
     <title>User</title>
     <link href="@Url.Content("~/Content/UserViewCSS.css")" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     
-   <div class="upper_square_background"></div>
-    <div class="bottom_square_background"></div>
+   <div class="upper_square_background">
+       <div class="upper_square_wrapper">
+
+           <div class="hint_text">Введіть назву або текст документу:</div>
+
+           @using (Html.BeginForm("Index", "User", FormMethod.Post))
+           {
+               <input class="SearchInput" autocomplete="off" type="text" placeholder="Пошук" name="InputTop" id="InputTop" value="" />
+              <br>
+               <img class="images_input_search" src="~/Content/search.png" style="width:40px; height:40px; position:relative; top:-45px; left:7px; transition:1s;"/>
+               <br>
+               <input type="submit"  value="Знайти" id="SearchButton"/>
+           }
+
+           </div>
+
+
+   </div>
+   <div class="bottom_square_background">
+       <div class="bottom_square_wrapper">
+
+          
+           <div class="hint_columns_names">
+               <div class="hintname">Назва документу</div>
+               <div class="hintname">Опис документу</div>
+               <div class="hintname">Дата створення</div>
+               <div class="hintname">Фізична адреса</div>
+           </div>
+         
+           <div class="docs_list_div">
+
+           @foreach(Documents doc in ViewBag.docs_list)
+           {
+               foreach (Rubrics rubric in ViewBag.rubrics_list)
+               {
+                   if (rubric.Rubric_ID == doc.Document_RubricID) { ViewBag.CurrentDocumentRubric = rubric.Rubric_Name; }
+               }
+
+
+               <div class="wrapper_single_document" style="">
+                   <div class="single_document_child">@doc.Document_Name (@ViewBag.CurrentDocumentRubric)</div>
+                   <div class="single_document_child">@doc.Document_Description</div>
+                   <div class="single_document_child">@doc.Document_CreationDate</div>
+                   <div class="single_document_child">@doc.Document_Address</div>
+
+               </div>
+            }
+               </div>
+       </div>
+
+   </div>
 
 
 </body>
