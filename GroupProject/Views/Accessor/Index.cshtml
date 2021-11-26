@@ -1,0 +1,113 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>User</title>
+    <link href="@Url.Content("~/Content/UserViewCSS.css")" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="upper_square_background">
+        <div class="upper_square_wrapper">
+
+            <div class="hint_text" style="margin-top:20px;">Додавайте нові та видаляйте старі документи тут:</div>
+            <div class="validation_error">@ViewBag.accessor_validation</div>
+
+            @using (Html.BeginForm("Index", "Accessor", FormMethod.Post))
+            {
+                <input value="@ViewBag.Input1_tosave" class="SearchInput" style="padding-left:15px; width:175px; height:40px; font-size:16px;" autocomplete="off" type="text" placeholder="Назва документу" name="InputTopDocName" id="InputTopDocName" value="" />
+                <input value="@ViewBag.Input2_tosave" class="SearchInput" style="padding-left: 15px; margin-left:15px; width: 175px; height: 40px; font-size: 16px; " autocomplete="off" type="text" placeholder="Опис документу" name="InputTopDocDesc" id="InputTopDocDesc" value="" />
+                <input value="@ViewBag.Input3_tosave" class="SearchInput" style="padding-left: 15px; margin-left: 15px; width: 175px; height: 40px; font-size: 16px; " autocomplete="off" type="text" placeholder="Рубрика" name="InputTopDocRub" id="InputTopDocRub" value="" />
+                <br>
+                <input value="@ViewBag.Input4_tosave" class="SearchInput" style=" padding-left: 15px; width: 175px; height: 40px; font-size: 16px; margin-top:10px; " autocomplete="off" type="text" placeholder="Дата створення" name="InputTopDocDate" id="InputTopDocDate" value="" />
+                <input value="@ViewBag.Input5_tosave" class="SearchInput" style="margin-left: 225px; padding-left: 15px; width: 175px; height: 40px; font-size: 16px; margin-top: 10px; " autocomplete="off" type="text" placeholder="Фізична адреса" name="InputTopDocAddress" id="InputTopDocAddress" value="" />
+
+                <br>
+                <input  type="submit" style="margin-top:10px; height:45px; width:190px; margin-left:210px;" value="Створити" id="CreateDocumentButton" />
+                <div style="font-size: 14px; color: #c8c8c8; position: relative; top: -150px; left: 690px; width: 210px; font-family: 'Comfortaa', cursive; text-align:center; ">Щоб видалити документ - введіть його ID</div>
+            }
+            @using (Html.BeginForm("IndexRemove", "Accessor", FormMethod.Post,new { @class="second_form"}))
+            {
+
+                <input autocomplete="off" type="text" placeholder="ID документу" style="width: 200px; padding-left:20px; height: 40px; font-size: 16px;" class="SearchInput" name="InputRemove" id="InputRemove" />
+                <input value="Видалити" type="submit" style="height: 40px; width: 200px; margin-left:0; " name="InputSubmit" id="InputSubmit" />
+            }
+            <div class="validation_error" style="top: -230px; left:480px;">@ViewBag.remove_form</div>
+
+        </div>
+
+
+    </div>
+    <div class="bottom_square_background">
+        <div class="bottom_square_wrapper">
+
+
+            <div class="hint_columns_names">
+                <div class="hintname">Назва документу</div>
+                <div class="hintname">Опис документу</div>
+                <div class="hintname">Дата створення</div>
+                <div class="hintname">Фізична адреса</div>
+            </div>
+
+            <div class="docs_list_div">
+
+                @foreach (Documents doc in ViewBag.docs_list)
+                {
+                    ViewBag.forJS = ViewBag.forJS + 1;
+                    ViewBag.IDsToRemove = new int[50];
+                    ViewBag.IDsToRemoveNumber = 0;
+                    foreach (Rubrics rubric in ViewBag.rubrics_list)
+                    {
+                        if (rubric.Rubric_ID == doc.Document_RubricID) { ViewBag.CurrentDocumentRubric = rubric.Rubric_Name; }
+                    }
+
+
+                    <div class="wrapper_single_document" style="">
+                        <div class="single_document_child" style="cursor:pointer;" onclick="choose_this_doc_to_remove(@ViewBag.forJS)" id="@ViewBag.forJS">@doc.Document_ID. @doc.Document_Name (@ViewBag.CurrentDocumentRubric)</div>
+
+                        <div class="single_document_child">@doc.Document_Description</div>
+                        <div class="single_document_child">@doc.Document_CreationDate</div>
+                        <div class="single_document_child">@doc.Document_Address</div>
+
+                    </div>
+                    }
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
+        var myvar_num=0;
+        var myvars = [];
+        function choose_this_doc_to_remove(doc_id) {
+            //alert("1");
+            document.getElementById(doc_id).style.color = "red";
+            myvars[myvar_num] = doc_id;
+            myvar_num++;
+           
+
+            console.log(myvars)
+           
+        }
+
+
+
+
+
+            //ViewBag.IDsToRemove[ViewBag.IDsToRemoveNumber]=parseInt(doc_id);
+            //ViewBag.IDsToRemoveNumber=ViewBag.IDsToRemoveNumber+1;
+            //console.log(ViewBag.IDsToRemoveNumber);
+
+
+    </script>
+</body>
+</html>

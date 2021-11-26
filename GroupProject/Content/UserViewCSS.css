@@ -1,0 +1,234 @@
+﻿.main_title {
+    color:red;
+}
+html{
+    
+}
+body {
+    height: 100%;
+}
+
+.upper_square_background {
+    background: #254aa8;
+    height: 330px;
+    display: flex;
+    justify-content:center;
+    align-items:flex-end;
+}
+.bottom_square_background {
+    background: #ebeffe;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.upper_square_wrapper {
+    width: 75%;
+    background: #3e66d0;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.bottom_square_wrapper {
+    width: 75%;
+    height: 75%;
+    background: #f5f6ff;
+    display: flex;
+    flex-direction:column;
+        
+}
+.hint_text {
+    margin-top:50px;
+    font-family: 'Comfortaa', cursive;
+    color:white;
+    font-weight:900;
+    font-size:32px;
+}
+
+.SearchInput {
+    padding-left:50px;
+    width: 700px;
+    margin-top:30px;
+    font-size:20px;
+    height: 50px;
+    border-radius: 50px;
+    font-family: 'Comfortaa', cursive;
+    color:black;
+    outline:none;
+    border:0;
+}
+    .SearchInput:hover ~.images_input_search{
+        transform:rotateY(360deg);
+    }
+
+#SearchButton {
+    position: relative;
+    font-family: 'Comfortaa', cursive;
+    color:white;
+    font-size:14px;
+    font-weight:600;
+    top: -30px;
+    left: 250px;
+    width: 200px;
+    height: 50px;
+    border: 1px solid white;
+    background: #3e66d0;
+    border-radius: 50px;
+    transition:0.5s;
+    cursor:pointer;
+}
+    #SearchButton:hover {
+        background: white;
+        border: 1px solid #3e66d0;
+        color: #3e66d0;
+
+    }
+
+.docs_list_div {
+    width:100%;
+   
+    display: flex;
+    flex-direction: column;
+  
+    top: 100px;
+    left:-185px;
+}
+
+.wrapper_single_document {
+    
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Comfortaa', cursive;
+
+}
+
+.single_document_child {
+    width: 25%;
+    border-bottom:2px solid gray;
+    padding-left:15px;
+    padding-top:15px;
+}
+
+.single_document_child:first-child{
+
+}
+
+.hint_columns_names {
+   
+    margin-top:25px;
+    margin-bottom:25px;
+    top:100px;
+    justify-content:space-between;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    color: gray;
+    font-family: 'Comfortaa', cursive;
+}
+
+    .hintname{
+        width:25%;
+       
+    }
+
+    .hint_columns_names:first-child{
+        padding-left:15px;
+    }
+
+#SubmitButton {
+   margin-top:20px;
+   margin-left:380px;
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    top: -30px;
+    left: 250px;
+    width: 200px;
+    height: 50px;
+    border: 1px solid white;
+    background: #3e66d0;
+    border-radius: 50px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+    #SubmitButton:hover {
+        background: white;
+        border: 1px solid #3e66d0;
+        color: #3e66d0;
+    }
+#CreateDocumentButton {
+    margin-top: 20px;
+    margin-left: 380px;
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    top: -30px;
+    left: 250px;
+    width: 200px;
+    height: 50px;
+    border: 1px solid white;
+    background: #3e66d0;
+    border-radius: 50px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+    #CreateDocumentButton:hover {
+        background: white;
+        border: 1px solid #3e66d0;
+        color: #3e66d0;
+    }
+
+
+
+.validation_error {
+    position:relative;
+    top:10px;
+    height:5px;
+    color: red;
+    font-size: 16px;
+    font-family: 'Comfortaa', cursive;
+}
+
+.second_form {
+    position: relative;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    top: -170px;
+    left:430px;
+    margin-left:90px;
+}
+
+
+#InputSubmit {
+    margin-top: 20px;
+    margin-left: 380px;
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    top: -30px;
+    left: 250px;
+    width: 200px;
+    height: 40px;
+    border: 1px solid white;
+    background: #3e66d0;
+    border-radius: 50px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+    #InputSubmit:hover {
+        background: white;
+        border: 1px solid #3e66d0;
+        color: #3e66d0;
+    }
