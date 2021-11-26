@@ -17,7 +17,7 @@ body {
 }
 .bottom_square_background {
     background: #ebeffe;
-    height:690px;
+    height:100%;
     display:flex;
     justify-content:center;
     align-items:flex-start;
@@ -138,4 +138,97 @@ body {
 
     .hint_columns_names:first-child{
         padding-left:15px;
+    }
+
+#SubmitButton {
+   margin-top:20px;
+   margin-left:380px;
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    top: -30px;
+    left: 250px;
+    width: 200px;
+    height: 50px;
+    border: 1px solid white;
+    background: #3e66d0;
+    border-radius: 50px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+    #SubmitButton:hover {
+        background: white;
+        border: 1px solid #3e66d0;
+        color: #3e66d0;
+    }
+#CreateDocumentButton {
+    margin-top: 20px;
+    margin-left: 380px;
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    top: -30px;
+    left: 250px;
+    width: 200px;
+    height: 50px;
+    border: 1px solid white;
+    background: #3e66d0;
+    border-radius: 50px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+    #CreateDocumentButton:hover {
+        background: white;
+        border: 1px solid #3e66d0;
+        color: #3e66d0;
+    }
+
+
+
+.validation_error {
+    position:relative;
+    top:10px;
+    height:5px;
+    color: red;
+    font-size: 16px;
+    font-family: 'Comfortaa', cursive;
+}
+
+.second_form {
+    position: relative;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    top: -170px;
+    left:430px;
+    margin-left:90px;
+}
+
+
+#InputSubmit {
+    margin-top: 20px;
+    margin-left: 380px;
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    top: -30px;
+    left: 250px;
+    width: 200px;
+    height: 40px;
+    border: 1px solid white;
+    background: #3e66d0;
+    border-radius: 50px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+    #InputSubmit:hover {
+        background: white;
+        border: 1px solid #3e66d0;
+        color: #3e66d0;
     }

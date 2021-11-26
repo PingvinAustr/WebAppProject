@@ -8,10 +8,72 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>User</title>
+    <link href="@Url.Content("~/Content/UserViewCSS.css")" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div> 
+
+    <div class="upper_square_background">
+        <div class="upper_square_wrapper">
+
+            <div class="hint_text">Введіть особисту інформацію для створення облікового запису:</div>
+            <div class="validation_error">@ViewBag.admin_validation_error</div>
+            @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+            {
+                <input class="SearchInput" style="width:300px; padding-left:20px; font-size:16px;" autocomplete="off" type="text" placeholder="Логін нового користувача" name="InputTopName" id="InputTopName" value="@ViewBag.input_top_name_save" />
+                <input class="SearchInput" style="width: 300px; padding-left: 20px; font-size: 16px; " autocomplete="off" type="text" placeholder="Пароль нового користувача" name="InputTopPass" id="InputTopPass" value="@ViewBag.input_top_pass_save" />
+                <input class="SearchInput" style="width: 300px; padding-left: 20px; font-size: 16px; " autocomplete="off" type="text" placeholder="Роль нового користувача" name="InputTopRole" id="InputTopRole" value="@ViewBag.input_top_ro_save" />
+                <br>
+                <input type="submit" value="Створити" id="SubmitButton" />
+            }
+
+
+
+        </div>
+
+
     </div>
+    <div class="bottom_square_background">
+        <div class="bottom_square_wrapper">
+
+
+            <div class="hint_columns_names">
+                <div class="hintname">ID користувача</div>
+                <div class="hintname">Ім'я користувача</div>
+                <div class="hintname">Пароль користувача</div>
+                <div class="hintname">Роль користувача</div>
+            </div>
+
+            <div class="docs_list_div">
+
+                @foreach (Users user in ViewBag.user_list)
+                {
+                    string current_role = "";
+                    foreach (GroupProject.Roles ro in ViewBag.roles_list)
+                    {
+                        if (user.UserRoleID == ro.RoleID)
+                        {
+                            current_role = ro.RoleName;
+                        }
+                    }
+
+
+                    <div class="wrapper_single_document" style="">
+                        <div class="single_document_child">@user.UserID </div>
+                        <div class="single_document_child">@user.UserName</div>
+                        <div class="single_document_child">@user.UserPassword</div>
+                        <div class="single_document_child">@current_role</div>
+
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+
+
 </body>
 </html>

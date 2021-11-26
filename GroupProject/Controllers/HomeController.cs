@@ -11,37 +11,11 @@ namespace GroupProject.Controllers
     public class HomeController : Controller
     {
 
-        //create data context
+       
         rubricsEntities db = new rubricsEntities();
+        //контекст базы данных
 
-
-        //[HttpGet]
-        /*
-        public ActionResult Signin(string test)
-        {
-
-            //CODE --> FORM
-            ViewBag.UserID = 1;
-            ViewData["Message"] = "HI MIR";
-            return View();
-
-        }
-        
-        [HttpPost]
-        public string Signin(List<string> names)
-        {
-            //FORM --> CODE 
-
-            // добавляем информацию о покупке в базу данных
-            //db.Purchases.Add(purchase);
-            // сохраняем в бд все изменения
-            //db.SaveChanges();
-
-           
-            return "Спасибо," +  names.Count+ ", за покупку!";
-        }
-        */
-
+      
         int UserIDSaved = 0, UserRoleIDSaved=0;
 
 
@@ -105,16 +79,19 @@ namespace GroupProject.Controllers
 
             }
 
+            //сохраним ID юзера
             ViewBag.transfer_user_id = UserIDSaved;
 
 
-            // return view
+            // Если неправильный логин/пароль - заново загружаем страницу и просим ввести повторно
            if (k==0) return View();
 
-            if ((k != 0) && (UserRoleIDSaved == 3)) { ViewBag.hint_text_bottom_box = "Всі доступні документи:"; ViewBag.docs_list = db.Documents.ToList(); ViewBag.rubrics_list = db.Rubrics.ToList();
+           //если пароль и логин верны - открывем новую страницу согласно роли пользователя
+            if ((k != 0) && (UserRoleIDSaved == 3)) {
+                ViewBag.auth = 1;  ViewBag.hint_text_bottom_box = "Всі доступні документи:"; ViewBag.docs_list = db.Documents.ToList(); ViewBag.rubrics_list = db.Rubrics.ToList();
                 return View("~/Views/User/Index.cshtml"); }
-            if ((k != 0) && (UserRoleIDSaved == 1)) return View("~/Views/Admin/Index.cshtml");
-
+            if ((k != 0) && (UserRoleIDSaved == 1)) { ViewBag.auth = 1;  ViewBag.user_list = db.Users.ToList(); ViewBag.roles_list=db.Roles.ToList(); return View("~/Views/Admin/Index.cshtml"); }
+            if ((k!=0) &&(UserRoleIDSaved==2)) { ViewBag.auth = 1;  ViewBag.forJS = 0; ViewBag.docs_list = db.Documents.ToList(); ViewBag.rubrics_list = db.Rubrics.ToList();  return View("~/Views/Accessor/Index.cshtml"); }
 
             return View();
         }
