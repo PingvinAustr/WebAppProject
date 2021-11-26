@@ -22,3 +22,18 @@ WebApplication Project .Net MVC EntityFramework - Document search system
 
 # Users table:
 ![alt text](https://i.imgur.com/RgxABTy.png)
+
+
+
+
+# Homepage interface:
+![alt text](https://i.imgur.com/x6Rff5E.png)
+
+# User interface:
+![alt text](https://i.imgur.com/FSxwCnk.png)
+
+# Admin interface:
+![alt text](https://i.imgur.com/pyiRWoq.png)
+
+# Accessor interface:
+![alt text](https://i.imgur.com/sg2aUtr.png)
