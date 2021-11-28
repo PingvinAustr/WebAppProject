@@ -1,5 +1,11 @@
 # Project description
 WebApplication Project .Net MVC EntityFramework - Document search system
+## Using:
+- .NET Framework MVC
+- Entity Framework
+- MS SQL Server
+- HTML/CSS/JS
+
 
 # Roles:
 -Admin (adding new users, setting logins and passwords)
